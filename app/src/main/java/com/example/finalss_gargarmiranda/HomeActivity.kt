@@ -34,18 +34,20 @@ class HomeActivity : AppCompatActivity() {
 
         Reserve.setOnClickListener {
             val intent = Intent(this, ReserveActivity::class.java)
+            intent.putExtra("USER_NAME", username)
             startActivity(intent)
         }
 
 
         List.setOnClickListener {
             val intent = Intent(this, ReservationListActivity::class.java)
+            intent.putExtra("USER_NAME", username)
             startActivity(intent)
         }
 
-
         Report.setOnClickListener {
             val intent = Intent(this, ReportFacilityActivity::class.java)
+            intent.putExtra("USER_NAME", username)
             startActivity(intent)
         }
     }
