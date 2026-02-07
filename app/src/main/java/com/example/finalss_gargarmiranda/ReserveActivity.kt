@@ -39,7 +39,6 @@ class ReserveActivity : AppCompatActivity() {
         val LRC2 = findViewById<MaterialButton>(R.id.BTN_LRCD2)
         val sportsComplex = findViewById<MaterialButton>(R.id.BTN_sportsComplex)
         val computerLab = findViewById<MaterialButton>(R.id.BTN_computerLab)
-        val others = findViewById<EditText>(R.id.ET_Others)
 
         val buttons = listOf(PEArea, AVR, caseRoom, LRC1, LRC2, sportsComplex, computerLab)
 

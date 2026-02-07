@@ -6,21 +6,27 @@ object ReservationRepo {
 
     private val db = FirebaseFirestore.getInstance()
 
-    fun addReservation(
+    fun addReservation(reservation: Map<String, Any>) {
+        db.collection("reservations").add(reservation)
+    }
+
+    fun isReservationExisting(
         facility: String,
         date: String,
         time: String,
-        reservedBy: String
+        callback: (Boolean) -> Unit
     ) {
-        val reservation = hashMapOf(
-            "facility" to facility,
-            "date" to date,
-            "time" to time,
-            "reservedBy" to reservedBy,
-            "status" to "reserved"
-        )
-
         db.collection("reservations")
-            .add(reservation)
+            .whereEqualTo("facilityName", facility)
+            .whereEqualTo("reservationSlot.date", date)
+            .whereEqualTo("reservationSlot.time", time)
+            .whereIn("status", listOf("reserved", "pending"))
+            .get()
+            .addOnSuccessListener { documents ->
+                callback(!documents.isEmpty)
+            }
+            .addOnFailureListener {
+                callback(false)
+            }
     }
 }
