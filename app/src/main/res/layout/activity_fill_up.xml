@@ -152,13 +152,6 @@
                 android:text="Time of Activity"
                 android:textColor="@color/black"
                 android:textSize="14sp" />
-            <EditText
-                android:id="@+id/ETFillUp_TimeActivity"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:inputType="text"
-                android:backgroundTint="@color/black" />
 
             <LinearLayout
                 android:layout_width="match_parent"

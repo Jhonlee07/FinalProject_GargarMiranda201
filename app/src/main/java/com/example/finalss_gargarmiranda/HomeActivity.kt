@@ -6,10 +6,7 @@ import android.view.View
 import android.widget.ImageButton
 import android.widget.LinearLayout
 import android.widget.TextView
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -21,9 +18,8 @@ class HomeActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContentView(R.layout.activity_home)
-        
+
         auth = FirebaseAuth.getInstance()
         db = FirebaseFirestore.getInstance()
 
@@ -33,6 +29,8 @@ class HomeActivity : AppCompatActivity() {
             insets
         }
 
+
+        val username = intent.getStringExtra("USER_NAME")
         val tvUsernameDisplay = findViewById<TextView>(R.id.tv_username_display)
         val llPending = findViewById<LinearLayout>(R.id.ll_pending)
         val btnPending = findViewById<ImageButton>(R.id.btn_pending_reservations)
@@ -57,7 +55,6 @@ class HomeActivity : AppCompatActivity() {
                 }
         }
 
-        // Setup Bottom Navigation
         val bottomNav = findViewById<BottomNavigationView>(R.id.bottom_navigation)
         NavigationHelper.setupBottomNavigation(this, bottomNav, R.id.navigation_home)
 
